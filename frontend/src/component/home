@@ -1,0 +1,69 @@
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+// import './getProduct.css'
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import {Link} from 'react-router-dom'
+function Getproduct() {
+    const [getdata, setGet] = useState([])
+    useEffect((event) => {
+
+        axios.get('http://localhost:8000/api/v1/getproduct').then((res) => {
+            console.log("res >> ", res)
+            // event.preventDefault()
+
+            console.log(res.data)
+            setGet(res.data)
+            setGet(res.data.products)
+
+
+        }).catch((err) => {
+            console.log(err)
+        })
+
+
+    }, [])
+
+    return (
+        <div style ={{margin : 50}}>
+
+
+            {console.log(getdata)}
+
+            <div className="row gy-5">
+                {getdata.map((item) => (
+                    <div className="col-md-4">
+                        <div className="card card-block">
+                        <h4 class="card-text" style ={{margin :10}}>{item.name}</h4> 
+                            <img height={246} src={`http://localhost:8000/${item.profilePic.fileName}`} className="card-img-top" alt="..." />
+                            <div class="card-body">
+                                 
+                                
+                                <p class="card-text"> ₹{item.price}</p>
+                                <p class="card-text">Ratings: {item.ratings}</p>
+                                <p class="card-text">Category: {item.category}</p>
+                                <form >
+                                <Link to="#" class="btn btn-primary">Add to Cart</Link>
+                                </form>
+                                
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+
+
+
+            
+
+        </div>
+ )}
+
+
+export default Getproduct
+                        {('product' in item) && item['product'].item['profilePic'].fileName}
+
+
+https://github.com/reduxjs/redux/blob/master/examples/counter/src/app/store.js
+https://github.com/zalmoxisus/redux-devtools-extension

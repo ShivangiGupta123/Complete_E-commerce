@@ -1,0 +1,32 @@
+import {BrowserRouter , Route, Routes} from 'react-router-dom'
+
+import Signin from "./component/adminSignin";
+import Signup from "./component/adminSignup";
+import Product from "./component/adminProduct";
+
+
+
+
+
+
+function App() {
+  return (
+    <div className="App">
+    
+    <BrowserRouter>
+    <Routes>
+    <Route path = "/" element = {<Signin/>}/>
+    <Route path = "/adminsignup" element = {<Signup/>}/>
+    <Route path = "/adminsignin" element = {<Signin/>}/>
+    <Route path = "/adminproduct" element = {<Product/>}/>
+    
+
+    
+    </Routes>
+    </BrowserRouter>
+      
+    </div>
+  );
+}
+
+export default App;

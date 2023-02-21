@@ -1,0 +1,33 @@
+
+/* h3{
+    color:rgb(127, 112, 163);
+    text-align: center;
+} */
+.container-product img{
+    height:200px;
+    width:200px;
+    padding-left: 50px;
+    
+
+}
+.container-product{
+    background-color: lemonchiffon;
+    width: 300px;
+    /* height: 300px; */
+    float:left;
+    margin-left: 50px;
+    padding-left: 30px;
+}
+
+
+
+.button2{
+    height: 50px;
+  width: 200px;
+  font-weight: bold;
+  color: white;
+  background-color: rgb(5, 201, 64);
+  font-size: 20px;
+  border:none;
+  margin-bottom: 20px;
+}

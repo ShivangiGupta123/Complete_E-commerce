@@ -1,0 +1,27 @@
+exports.payment = async(req,res)=>{
+    const total = req.body.total
+    // const token = req.body.token 
+    console.log("req.body",req.body)
+    stripe.customers.create({
+        email : req.body.stripeEmail,
+        source : req.body.stripeToken
+
+    }).then(customer=>{
+        stripe.charges.create({
+            amount : total,
+            currency : "INR",
+            customer : customer.id,
+
+        }).then((charge =>{
+            console.log("charge",charge)
+            res.send("success")
+        }))
+    })
+
+    .catch(err => console.log(err))
+    // console.log("req.body.stripeEmail",req.body.stripeEmail)
+    // console.log("req.body.stripeToken",req.body.stripeToken)
+    // console.log("req.customer",req.customer)
+    
+
+}

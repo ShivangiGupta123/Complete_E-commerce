@@ -1,0 +1,39 @@
+ques 1. #match
+db.inventory.aggregate([
+{$match:{"price":"30,000"}},
+])
+
+
+quest 2. #match & #group
+db.inventory.aggregate([
+{$match:{"item":"computer"}},
+{$group:{_id:{"qty":"$qty","price":"$price"}}}
+])
+
+
+ques 3. #match & #project  & #group
+db.inventory.aggregate([
+{$match:{"item":"computer"}},
+{$project:{price:1,qty:1}},
+{$group:{_id:{"qty":"$qty","price":"$price","stock":"$stock"}}}
+])
+
+
+ques 4. #unwind & #match & #project
+{$unwind:"$language"},
+{$match:{"item":"computer"}},
+{$project:{price:1,qty:1,language:1}},
+
+])
+
+
+ques 5. #lookup & #match
+db.inventory.aggregate([
+{$match:{"price":"30,000"}},
+{$lookup:{from:"orders",localField:"item",foreignField:"item",as : "myorderdetails"}},
+
+])
+
+
+
+
